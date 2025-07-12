@@ -1,0 +1,24 @@
+
+
+File name-----docker-compose.yml
+===================================================================================================================
+docker-compose up  #this command will start the yaml and after that process will started. We check using docker ps
+
+=================================================================================================================
+
+docker-compose down  #this will stop the process and also it will remove the container
+
+=================================================================================================================
+
+docker-compose up -d # this will work in detach mode mean It will free the terminal to do other work.
+
+========================================================================================================
+
+docker-compose up -d mysqldb # here mysqldb is service name, as in docker-compose yml file we can manage multiple service. If we want to run a perticular service then we can do by using this command
+
+============================================================================================================================
+
+# when we run multi container with docker compose then it will automatically create a network. Although we can use out network as well.
+
+
+

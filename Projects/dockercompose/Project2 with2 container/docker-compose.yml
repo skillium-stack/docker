@@ -1,0 +1,30 @@
+
+services:
+  mysqldb:
+    image: 'mysql:latest'
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=userinfo
+    container_name: "mysqldb"
+    networks:
+      - my-net
+    volumes:
+      - ./server.txt /mypp/server.txt  #it will bind server.txt file with WORKDIR ie myapp.
+    healthcheck:  #all these details are availbale in docker document
+      test: ['CMD', mysqladmin', 'ping', '-h', 'localost']
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+
+  mypython:
+    build: # here need to give dockerfile path, if dockercompose is in same directory then use./
+    container_name: "mypyhon"
+    depends_on:  # it mean it will hold this one 1st one will deploy
+      mysqldb:  
+        condition: service_healthy
+    stdin_open: true
+    tty: true
+
+  networks:
+    my-net:

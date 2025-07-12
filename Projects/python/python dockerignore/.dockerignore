@@ -1,0 +1,5 @@
+.dockerignore
+Dockerfile
+myname.tf
+
+# this .dockerignore file will help us not to push extra files while creating the images

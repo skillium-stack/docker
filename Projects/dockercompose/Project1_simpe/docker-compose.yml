@@ -1,0 +1,8 @@
+services:
+  mysqldb:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=Rootpass
+      - MYSQL_DATABASE=userinfo
+    container_name: "mysqlcon"
+  

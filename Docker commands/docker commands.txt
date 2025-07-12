@@ -1,0 +1,84 @@
+docker build .   (. represents, we are in required folder)----# to create the image
+
+================================================================================================
+
+ERROR: error during connect: Head "http://%2F%2F.%2Fpipe%2FdockerDesktopLinuxEngine/_ping": open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.  
+
+If get this error means docker is not start
+
+===========================================================================================================
+
+docker image ls  ---# to check the created images
+
+REPOSITORY   TAG       IMAGE ID       CREATED          SIZE  
+<none>       <none>    358be566998a   52 seconds ago   1.41GB
+
+=============================================================================================================
+
+docker build -t playerimage:02 . # it will provide the tag with verion of the image . -t indicate of tag myimage:01 here myimage is tag and 01 is version
+====================================================================================================================
+docker run <Image ID>  # to run the application on contianer
+
+=================================================================================================================
+docker ps -------for process status  # it will show only running process
+
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS     NAMES     
+852f41757d24   358be566998a   "docker-entrypoint.s…"   2 minutes ago   Up 2 minutes             affectionate_meninsky
+
+docker ps -a  -----# it will show all running and stop processes.
+=========================================================================================================================
+
+docker stop <container name/ID>
+
+=====================================================================================================
+docker run -p 3000:3000 <image id>   # this command with show running the application, but we can not use terminal further.
+
+here 1st 3000 is indicate for expose the port in local machine and 2nd port indicate for docker container port on which application is running
+
+===================================================================================================================================================
+
+docker run -d -p 3000:3000 <image id>    -d means detach mode
+
+here 1st 3000 is indicate for expose the port in local machine and 2nd port indicate for docker container port on which application is running
+
+# if we use this command by change its 1st port, then we can use this application on multiple containers.
+
+====================================================================================================================================================
+
+docker rm <container name/ID>  #it will delete the containers
+
+===========================================================================================================================================
+
+docker run -d --rm -p 3000:3000 <image id>
+# by using of this command if we stop the cntainer then container will automatically deleted
+
+=======================================================================================================================================
+docker run -d --rm --name "mycontainer"-p 3000:3000 <image id>  # in this command we can run the application on given by custom container name
+
+==============================================================================================
+docker rmi myimage:01   # to delete the image
+=============================================================================================================================
+docker run -d --rm --name "mycontainer"-p 3000:3000 <image name>:TAG  -----------------------------this command will use, if Image name is same and tags are different
+=========================================================================================
+docker run -it <Image ID> # here it indictes form interective terminal  ex. if we run any python program for addition then it will ask 1st no. then 2nd number
+==============================================================================================================
+docker tag oldimage:01 myrepo/newimage:02 ----------------------# this can use to rename the images
+==============================================================================================================
+To push docker images in dockerhub
+
+docker login
+
+You need to tag your image with your Docker Hub username and repository name. Docker Hub repositories follow this format: username/repository:tag
+
+docker tag  2deaa5524ae6 freelancce/playerimage:01
+docker push freelancce/playerimage:01
+===============================================================================================
+docker run -d --rm --name "mycontainer" -v myvolume:/<WORKDIR>/ <imageid>
+
+==================================================================
+docker volume --help  # it will gives us all volume related commands
+=========================================================================================================================
+
+docker run -v D:\Learnig doc\Docker\Projects\python\python with vloume bind\servers.txt:/<WORKDIR>/server.txt --rm <image id>   # this command will bind the file with volume and use as external volume for the container
+============================================================================================================================================================
+

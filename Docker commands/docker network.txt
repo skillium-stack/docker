@@ -1,0 +1,18 @@
+docker network --help  #to check all the network related command
+==============================================================================================
+docker network create my-net  # to create docker network <mynet is network name>
+
+===============================================================================================
+
+docker network ls  # to check all the docker network
+=========================================================================================================
+docker run -d --env MYSQL_ROOT_PASSWORD="passroot" --env MYSQL_DATABASE="userinfo" --name mysqldb  --network my-net mysql
+
+# --network my-net,  my-net is my docker network name   # one container
+============================================================================================================
+
+docker run -it --rm --name sqlconnect --network my-net 2d6258583cb1  <2d6258583cb1 is image ID>  #2nd container
+
+============================================================================================
+
+# As both container is in same network, and as dhost name we can give sqlcontainer name like mysqldb

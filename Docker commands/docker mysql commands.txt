@@ -1,0 +1,37 @@
+1. Pull docker Image
+
+docker pull mysql
+
+=====================================================================================================
+2. run this docker image 
+
+docker run -d --name mysqldb  mysql
+
+=======================================================================================================
+
+3. after that this process will stop with error # to check this process use---docker ps
+
+to check the error  usr----docker logs mysqldb <mysqldb is container name>
+
+Entrypoint script for MySQL Server 9.0.1-1.el9 started.
+2024-09-19 16:23:39+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+2024-09-19 16:23:39+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 9.0.1-1.el9 started.
+2024-09-19 16:23:39+00:00 [ERROR] [Entrypoint]: Database is uninitialized and password option is not specified
+    You need to specify one of the following as an environment variable:
+    - MYSQL_ROOT_PASSWORD
+    - MYSQL_ALLOW_EMPTY_PASSWORD
+    - MYSQL_RANDOM_ROOT_PASSWORD
+
+IT will give these errors. To resolve these errors use
+
+docker run -d --env MYSQL_ROOT_PASSWORD="passroot" --env MYSQL_DATABASE="userinfo" --name mysqldb  mysql
+
+# env MYSQL_DATABASE="userinfo"  this will use to create database
+
+===============================================================================================================
+
+docker inspect mysqldb <mysqldb is container name>  # It will provide container details like IPs, Ports and all
+
+====================================================================================================================
+
+Use that IP as dbhost and db name and password as provided in the command

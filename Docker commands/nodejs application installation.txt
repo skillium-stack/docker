@@ -1,0 +1,28 @@
+sudo apt update
+sudo apt install nodejs
+sudo apt install npm
+npx create-react-app myapp     <myapp---this name we can change>
+
+===============================================================================================
+for windows
+
+Download nodejs from--------https://nodejs.org/en/download/prebuilt-installer
+
+create a folder and open it with vs code open terminal in VS(powershell terminal) and run-------npx create-react-app myapp     <myapp---this name we can change>
+
+IF you get error related to npm folder then-----
+
+ npm cache clean --force
+
+ npm install -g npm@10.8.3
+
+  npm -v
+
+then run ----npx create-react-app myapp 
+
+After that in will create a application folder with myapp name
+
+In myapp folder node_module folder is created beacuse of npm install, If we delete it then we need to run npm install command again
+
+
+

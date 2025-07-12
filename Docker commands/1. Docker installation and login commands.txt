@@ -1,0 +1,66 @@
+You can create an Ubuntu EC2 Instance on AWS and run the below commands to install docker.
+
+sudo apt update
+sudo apt install docker.io -y
+=======================================================================================================================================
+Grant Access to your user to run docker commands
+To grant access to your user to run the docker command, you should add the user to the Docker Linux group. Docker group is create by default when docker is installed.
+
+sudo usermod -aG docker ubuntu
+
+=================================================================================================================================
+A easy way to verify your Docker installation is by running the below command
+
+docker run hello-world
+=====================================================================================================================
+Start Docker daemon
+You use the below command to verify if the docker daemon is actually started and Active
+
+sudo systemctl status docker
+
+If you notice that the docker daemon is not running, you can start the daemon using the below command
+
+sudo systemctl start docker
+
+========================================================================================================================================
+
+Clone this repository and move to example folder
+git clone https://github.com/iam-veeramalla/Docker-Zero-to-Hero (My clone repo path /opt/Docker-Zero-to-Hero/examples/first-docker-file)
+cd  /opt/Docker-Zero-to-Hero/examples/first-docker-file (Here 2 file are there app.py and dockerfile)
+Build your first Docker Image
+You need to change the username accordingly in the below command
+
+docker build -t freelancce/my-first-docker-image:latest .
+
+=======================================================================================================================================================
+
+Login to Docker [Create an account with https://hub.docker.com/]
+docker login
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+Username: freelancce
+Password:
+WARNING! Your password will be stored unencrypted in /home/ubuntu/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+====================================================================================================================================================
+
+Run your First Docker Container
+docker run -it freelancce/my-first-docker-image
+===================================================================================================================================
+Push the Image to DockerHub and share it with the world
+docker push freelancce/my-first-docker-image:latest
+=======================================================================================================================
+
+Verify Docker Image is created
+docker images
+==================================================================================================================================================
+To verify 
+# Set the working directory in the image
+WORKDIR /app
+
+# Copy the files from the host file system to the image file system
+COPY . /app what does it mean
+
+docker run -it freelancce/my-first-docker-image /bin/bash

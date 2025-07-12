@@ -1,0 +1,24 @@
+1.  docker build -t playerimage:02 . # it will provide the tag with verion of the image . -t indicate of tag myimage:01 here myimage is tag and 01 is version
+
+2. docker image ls  ---# to check the created images
+
+3. docker run -d --rm --name "mycontainer"-p 3000:3000 <image id>  # in this command we can run the application on given by custom container name
+
+here 1st 3000 is indicate for expose the port in local machine and 2nd port indicate for docker container port on which application is running
+
+# if we use this command by change its 1st port, then we can use this application on multiple containers.
+
+4. docker rmi myimage:01   # to delete the image
+
+5. docker tag oldimage:01 myrepo/newimage:02 ----------------------# this can use to rename the images
+
+6. You need to tag your image with your Docker Hub username and repository name. Docker Hub repositories follow this format: username/repository:tag
+
+docker tag  2deaa5524ae6 freelancce/playerimage:01
+docker push freelancce/playerimage:01
+
+7. docker exec -it 93cd38fc24a5 ls -la /var/www/html # to check the files available in this path
+
+8. docker exec -it 93cd38fc24a5 cat /var/log/apache2/access.log
+
+ 

@@ -1,0 +1,6 @@
+services:
+  mypyhonapp:
+    build: ./ #docker file path
+    ports:
+      -8080:3000
+    container_name: "mywebapp"
